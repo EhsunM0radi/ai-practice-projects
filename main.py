@@ -1,3 +1,4 @@
+from functions import bfs, mark_path
 class Maze:
     def __init__(self, file_path):
         with open(file_path, "r") as f:
@@ -37,6 +38,12 @@ class Maze:
 
 
 m = Maze("maze.txt")
-print("Start:", m.start)
-print("Goal:", m.goal)
-print("Neighbors of start:", m.neighbors(m.start))
+path = bfs(m)
+
+if path:
+    print("Path found:", path)
+else:
+    print("No path found.")
+
+mark_path(m, path)
+m.display()
